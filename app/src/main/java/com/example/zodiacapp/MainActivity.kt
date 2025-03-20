@@ -1,10 +1,12 @@
 package com.example.zodiacapp
 
 import android.os.Bundle
+import android.widget.LinearLayout
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.zodiacapp.data.Horoscope
 
 class MainActivity : AppCompatActivity() {
@@ -35,5 +37,23 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+
+        recyclerView = findViewById(R.id.recyclerView)
+
+        val adapter = HoroscopeAdapter(horoscopeList)
+        recyclerView.Adapter = adapter
+        recyclerView-Layout = LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false)
+
+
+
+
+
+
+
     }
+
+
+
+
 }
