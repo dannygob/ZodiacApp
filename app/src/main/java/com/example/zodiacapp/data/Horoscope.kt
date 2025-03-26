@@ -6,6 +6,5 @@ class Horoscope (
     val name: Int,
     val dates: Int,
     val icon: Int,
-){
+)
 
-}
