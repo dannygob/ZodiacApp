@@ -14,7 +14,7 @@ import com.example.zodiacapp.data.HoroscopeProvider
 
 class DetailActivity : AppCompatActivity() {
     lateinit var nameTextView: TextView
-    lateinit var dateTextView: TextView
+    lateinit var datesTextView: TextView
     lateinit var iconImagenView:  ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,9 +26,18 @@ class DetailActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        nameTextView = findViewById(R.id.nameTextView)
+        datesTextView = findViewById(R.id.datesTextView)
+        iconImagenView = findViewById(R.id.iconImageView)
+
         val id = intent.getStringExtra("HOROSCOPE_ID")!!
         val horoscope = HoroscopeProvider.getById(id)!!
         Toast.makeText(this, getString(horoscope.name), Toast.LENGTH_SHORT).show()
+
+        nameTextView.setText(horoscope.name)
+        datesTextView.setText(horoscope.dates)
+        iconImagenView.setImageResource(horoscope.icon)
+
     }
 
 

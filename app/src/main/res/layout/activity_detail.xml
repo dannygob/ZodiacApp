@@ -12,7 +12,8 @@
     <ImageView
         android:id="@+id/iconImageView"
         android:layout_width="200dp"
-        android:layout_height="200dp"/>
+        android:layout_height="200dp"
+        />
 
 
     <TextView
@@ -20,12 +21,14 @@
         android:id="@+id/nameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="names"/>
+        tools:text="Names"
+        android:textSize="36sp"/>
     <TextView
-        android:id="@+id/dateTextView"
+        android:id="@+id/datesTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="Date"/>
+        tools:text="Dates"
+        android:textSize="36sp"/>
 
 </LinearLayout>
 
