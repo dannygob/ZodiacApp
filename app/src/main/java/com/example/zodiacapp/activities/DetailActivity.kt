@@ -15,11 +15,10 @@ import com.example.zodiacapp.R
 import com.example.zodiacapp.data.HoroscopeProvider
 
 
-
 class DetailActivity : AppCompatActivity() {
     lateinit var nameTextView: TextView
     lateinit var datesTextView: TextView
-    lateinit var iconImagenView:  ImageView
+    lateinit var iconImagenView: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,15 +49,17 @@ class DetailActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId){
+        when (item.itemId) {
             R.id.menu_favorite -> {
                 Toast.makeText(this, "Favorito", Toast.LENGTH_SHORT).show()
                 return true
             }
+
             R.id.menu_share -> {
                 Toast.makeText(this, "Compartir", Toast.LENGTH_SHORT).show()
                 return true
             }
+
             else -> {
                 return super.onOptionsItemSelected(item)
             }

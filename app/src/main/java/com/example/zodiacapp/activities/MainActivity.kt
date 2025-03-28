@@ -28,21 +28,22 @@ class MainActivity : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+
         }
 
 
         recyclerView = findViewById(R.id.recyclerView)
 
 
-        val adapter = HoroscopeAdapter(horoscopeList, { position ->
+        val adapter = HoroscopeAdapter(horoscopeList) { position ->
             val horoscope = horoscopeList[position]
             // Log.i(tag:"CLICK", msg:"he hecho click en un horoscopo")
 
-            val intent = Intent (this, DetailActivity::class.java)
+            val intent = Intent(this, DetailActivity::class.java)
             intent.putExtra("HOROSCOPE_ID", horoscope.id)
             startActivity(intent)
 
-        })
+        }
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
@@ -50,7 +51,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
 
-       menuInflater.inflate(R.menu.activity_main_menu,menu)
+        menuInflater.inflate(R.menu.activity_main_menu, menu)
         return true
         return super.onCreateOptionsMenu(menu)
     }
