@@ -2,16 +2,16 @@ package com.example.zodiacapp.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.zodiacapp.activities.DetailActivity
 import com.example.zodiacapp.HoroscopeAdapter
 import com.example.zodiacapp.R
-import com.example.zodiacapp.data.Horoscope
 import com.example.zodiacapp.data.HoroscopeProvider
 
 class MainActivity : AppCompatActivity() {
@@ -33,6 +33,7 @@ class MainActivity : AppCompatActivity() {
 
         recyclerView = findViewById(R.id.recyclerView)
 
+
         val adapter = HoroscopeAdapter(horoscopeList, { position ->
             val horoscope = horoscopeList[position]
             // Log.i(tag:"CLICK", msg:"he hecho click en un horoscopo")
@@ -45,15 +46,14 @@ class MainActivity : AppCompatActivity() {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
-
-
-
-
-
-
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
 
+       menuInflater.inflate(R.menu.activity_main_menu,menu)
+        return true
+        return super.onCreateOptionsMenu(menu)
+    }
 
 
 }
