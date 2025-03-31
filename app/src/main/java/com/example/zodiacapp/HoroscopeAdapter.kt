@@ -9,7 +9,8 @@ import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.zodiacapp.data.Horoscope
 
-class HoroscopeAdapter(val items: List<Horoscope>, val onItemClick: (Int) -> Unit) :
+
+class HoroscopeAdapter(var items: List<Horoscope>, val onItemClick: (Int) -> Unit) :
     Adapter<HoroscopeViewHolder>() {
 
     //cual es la vista
@@ -27,18 +28,18 @@ class HoroscopeAdapter(val items: List<Horoscope>, val onItemClick: (Int) -> Uni
 
     //voy a mostar la celda en la poscicion
     override fun onBindViewHolder(holder: HoroscopeViewHolder, position: Int) {
-
         val horoscope = items[position]
         holder.render(horoscope)
-        holder.itemView.setOnClickListener {
-
+        holder.itemView.setOnClickListener{
             //voy a navegar al detalle
             onItemClick(position)
-
-
         }
     }
 
+    fun updateItems(items: List<Horoscope>){
+        this.items = items
+        notifyDataSetChanged()
+    }
 }
 
 class HoroscopeViewHolder(view: View) : ViewHolder(view) {
