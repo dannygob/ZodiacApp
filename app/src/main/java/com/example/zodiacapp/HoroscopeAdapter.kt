@@ -11,8 +11,7 @@ import com.example.zodiacapp.data.Horoscope
 import com.example.zodiacapp.utils.SessionManager
 
 
-class HoroscopeAdapter(var items: List<Horoscope>, val onItemClick: (Int) -> Unit) :
-    Adapter<HoroscopeViewHolder>() {
+class HoroscopeAdapter(var items: List<Horoscope>, val onItemClick: (Int) -> Unit) : Adapter<HoroscopeViewHolder>() {
 
     //cual es la vista
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HoroscopeViewHolder {
@@ -20,7 +19,6 @@ class HoroscopeAdapter(var items: List<Horoscope>, val onItemClick: (Int) -> Uni
             LayoutInflater.from(parent.context).inflate(R.layout.item_horoscope, parent, false)
         return HoroscopeViewHolder(view)
     }
-
 
     //cuantos elementos tengo que listar
     override fun getItemCount(): Int {
@@ -56,13 +54,14 @@ class HoroscopeViewHolder(view: View) : ViewHolder(view) {
         dateTextView.setText(horoscope.dates)
         iconImageView.setImageResource(horoscope.icon)
 
-        val session= SessionManager(itemView.context)
+        val session = SessionManager(itemView.context)
 
         if (session.getFavoriteHoroscope()== horoscope.id){
-            favoriteImageView.visibility = View.VISIBLE
+
+            favoriteImage.visibility = View.VISIBLE
 
         } else {
-            favoriteImageView.visibity = View.GONE
+            favoriteImage.visibility = View.GONE
         }
 
     }

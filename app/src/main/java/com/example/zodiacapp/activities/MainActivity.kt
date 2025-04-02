@@ -39,19 +39,25 @@ class MainActivity : AppCompatActivity() {
         }
         recyclerView = findViewById(R.id.recyclerView)
 
-        adapter = HoroscopeAdapter(horoscopeList, { position ->
-        val horoscope = horoscopeList[position]
-        // Log.i(tag:"CLICK", msg:"he hecho click en un horoscopo")
-
-        val intent = Intent(this, DetailActivity::class.java)
-        intent.putExtra("HOROSCOPE_ID", horoscope.id)
-        startActivity(intent)
-
-    })
-        recyclerView.adapter = adapter
-        recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
     }
+    override fun onResume(){
+        super.onResume()
+
+        adapter = HoroscopeAdapter(horoscopeList, { position ->
+            val horoscope = horoscopeList[position]
+            // Log.i(tag:"CLICK", msg:"he hecho click en un horoscopo")
+
+            val intent = Intent(this, DetailActivity::class.java)
+            intent.putExtra("HOROSCOPE_ID", horoscope.id)
+            startActivity(intent)
+
+        })
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+    }
+
+
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
 

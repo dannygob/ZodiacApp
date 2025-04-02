@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -22,8 +23,11 @@ class DetailActivity : AppCompatActivity() {
     lateinit var iconImagenView: ImageView
     lateinit var session: SessionManager
     lateinit var horoscope: Horoscope
-    lateinit var favoriteMenuItem: MenuItem
+
     var isFavorite = false
+    lateinit var favoriteMenuItem: MenuItem
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -39,12 +43,11 @@ class DetailActivity : AppCompatActivity() {
         iconImagenView = findViewById(R.id.iconImageView)
 
         val id = intent.getStringExtra("HOROSCOPE_ID")!!
-        horoscope = HoroscopeProvider.getById(id)
-        session.getFavoriteHoroscope() == horoscope.id
 
-        val horoscope = HoroscopeProvider.getById(id)!!
-        //Toast.makeText(this, getString(horoscope.name), Toast.LENGTH_SHORT).show()
-        isFavorite = session.getFavoriteHoroscope() == horoscope.id
+        horoscope = HoroscopeProvider.getById(id)!!
+
+        isFavorite= session.getFavoriteHoroscope() == horoscope.id
+
         nameTextView.setText(horoscope.name)
         datesTextView.setText(horoscope.dates)
         iconImagenView.setImageResource(horoscope.icon)
@@ -63,7 +66,7 @@ class DetailActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.menu_favorite -> {
-                Toast.makeText(this, "Favorito", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(this, "Favorito", Toast.LENGTH_SHORT).show()
                 if (isFavorite) {
                     session.setFavoriteHoroscope("")
 
@@ -82,9 +85,10 @@ class DetailActivity : AppCompatActivity() {
                 val sendIntent = Intent()
                 sendIntent.setAction(Intent.ACTION_SEND)
                 sendIntent.putExtra(Intent.EXTRA_TEXT, "This is my text to send. ")
-                sendIntent.setType("text plain")
+                sendIntent.setType("text/plain")
 
                 val shareIntent = Intent.createChooser(sendIntent, null)
+                startActivity(shareIntent)
                 return true
             }
 
