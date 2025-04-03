@@ -24,11 +24,26 @@
         tools:text="Names" />
 
     <TextView
-        android:id="@+id/datesTextView"
+        android:id="@+id/horoscopeLukcTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="36sp"
         tools:text="Dates" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height=""
+    <TextView
+        android:id="@+id/horoscopeLukcTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        tools:text="lorem Ipsum Is "/>
+
+
+
+    </ScrollView>
+
 
 </LinearLayout>
 

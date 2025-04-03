@@ -2,6 +2,7 @@ package com.example.zodiacapp.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.renderscript.ScriptGroup
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.ImageView
@@ -16,6 +17,13 @@ import com.example.zodiacapp.R
 import com.example.zodiacapp.data.Horoscope
 import com.example.zodiacapp.data.HoroscopeProvider
 import com.example.zodiacapp.utils.SessionManager
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import okhttp3.HttpUrl
+import org.json.JSONObject
+import java.io.BufferedReader
+import java.net.HttpURLConnection
+import kotlin.math.log
 
 class DetailActivity : AppCompatActivity() {
     lateinit var nameTextView: TextView
@@ -51,6 +59,8 @@ class DetailActivity : AppCompatActivity() {
         nameTextView.setText(horoscope.name)
         datesTextView.setText(horoscope.dates)
         iconImagenView.setImageResource(horoscope.icon)
+
+        getHoroscopeLuck()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -108,4 +118,28 @@ class DetailActivity : AppCompatActivity() {
         }
     }
 
+}
+fun  getHoroscopeLuck(){
+    progressBar.visibility
+    CoroutineScope(Dispatchers.IO)
+    Val url = url.openConection()
+
+
+    try(
+        if (urlConnetion.responseCode == HttpURLConnection.HTTP_OK){
+
+            val bufferedReader = BufferedReader
+
+            log.i("API",)
+            return response.toString()
+
+
+
+            val result JSONObject(response.toString()).getJSONObject("data").getString
+        } else{
+            log.it("API,")
+            return "false"
+        }
+
+    )
 }
